@@ -35,6 +35,13 @@ def plot_approximation_image(image_wt, level):
     # cv2.imshow(window_name,im)
     # cv2.waitKey(0)
 
+    fig = plt.figure()
+    x,y = np.mgrid[:image_wt.scales[level].shape[0],:image_wt.scales[level].shape[1]]
+    ax2 = fig.add_subplot(1,1,1,projection='3d')
+    ax2.plot_surface(x,y,image_wt.scales[level],cmap=plt.cm.jet,rstride=1,cstride=1,linewidth=0.,antialiased=False)
+    ax2.set_title('3D approx '+str(level))
+    ax2.set_zlim3d(0,1000)
+
     return
 
 def plot_reconstructed_detail(image_wt, level):
@@ -50,5 +57,15 @@ def plot_reconstructed_detail(image_wt, level):
     plt.figure( "recon at level " + str(level))
     plt.imshow(inv_pill_t, cmap=plt.cm.gray)
 
+    # fig = plt.figure()
+    # x,y = np.mgrid[:inv_pill_t.shape[0],:inv_pill_t.shape[1]]
+    # ax2 = fig.add_subplot(1,1,1,projection='3d')
+    # ax2.plot_surface(x,y,inv_pill_t,cmap=plt.cm.jet,rstride=1,cstride=1,linewidth=0.,antialiased=False)
+    # ax2.set_title('3D recon '+str(level))
+    # ax2.set_zlim3d(0,1000)
+
 
     return
+
+
+
