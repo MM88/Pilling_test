@@ -36,7 +36,10 @@ def plot_approximation_image(image_wt, level):
     # cv2.waitKey(0)
 
     mean = image_wt.scales[level].mean()
-    abs_img = [[(cell- mean) if (cell< mean) else cell for cell in row] for row in image_wt.scales[level] ]
+    std = image_wt.scales[level].std()
+    abs_img = [[cell if (mean-cell) > 2*std else 0.0 for cell in row] for row in image_wt.scales[level] ]
+    blue_img = [[(cell) if cell < mean else mean for cell in row] for row in image_wt.scales[level] ]
+    blue_img = [[(mean-cell) if cell != mean else 0 for cell in row] for row in blue_img]
 
 
     # abs_img = [(row[i]+mean) if (row[i] < mean) else row[i] for i in image.shape[] for row in image ]
@@ -44,7 +47,8 @@ def plot_approximation_image(image_wt, level):
     fig = plt.figure('3d level'+ str(level))
     x,y = np.mgrid[:image_wt.scales[level].shape[0],:image_wt.scales[level].shape[1]]
     ax2 = fig.add_subplot(1,1,1,projection='3d')
-    ax2.plot_surface(x,y,image_wt.scales[level],cmap=plt.cm.jet,rstride=1,cstride=1,linewidth=0.,antialiased=False)
+    ax2.plot_surface(x,y,blue_img,cmap=plt.cm.jet,rstride=1,cstride=1,linewidth=0.,antialiased=False)
+    # ax2.plot_surface(x,y, image_wt.scales[level],cmap=plt.cm.jet,rstride=1,cstride=1,linewidth=0.,antialiased=False)
     ax2.set_title('3D approx '+str(level))
     ax2.set_zlim3d(0,1000)
 

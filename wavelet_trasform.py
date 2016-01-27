@@ -33,7 +33,7 @@ def main(argv):
 
     # 21/21P, 33, 32, 31, 22
 
-    image = plt.imread('./PILLING/IMG_0822_GS.JPG')
+    image = plt.imread('./dataset/2/pill_17.jpg')
 
 
     # print np.cov(image)
