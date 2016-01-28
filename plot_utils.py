@@ -40,6 +40,7 @@ def plot_approximation_image(image_wt, level):
     abs_img = [[cell if (mean-cell) > 2*std else 0.0 for cell in row] for row in image_wt.scales[level] ]
     blue_img = [[(cell) if cell < mean else mean for cell in row] for row in image_wt.scales[level] ]
     blue_img = [[(mean-cell) if cell != mean else 0 for cell in row] for row in blue_img]
+    # blue_img =  cv2.GaussianBlur(np.array(blue_img),(5,5),0) #smoothing gaussiano
 
 
     # abs_img = [(row[i]+mean) if (row[i] < mean) else row[i] for i in image.shape[] for row in image ]
@@ -52,9 +53,7 @@ def plot_approximation_image(image_wt, level):
     ax2.set_title('3D approx '+str(level))
     ax2.set_zlim3d(0,1000)
 
-
-
-    return
+    return blue_img
 
 def plot_reconstructed_detail(image_wt, level):
 
@@ -96,6 +95,7 @@ def plot_reconstructed_detail(image_wt, level):
 
 
     return
+
 
 
 
