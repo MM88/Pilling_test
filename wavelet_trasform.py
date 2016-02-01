@@ -86,38 +86,38 @@ def main(argv):
 
 # 21/21P, 33, 32, 31, 22
 
-    # image1 = plt.imread('./dataset/1/pill_14.jpg')
-    # res_img1 = compute_and_plot_transform(image1)
-    # image2 = plt.imread('./dataset/3/pill_34.jpg')
-    # res_img2 = compute_and_plot_transform(image2)
-    # image3 = plt.imread('./dataset/5/pill_14.jpg')
-    # res_img3 = compute_and_plot_transform(image3)
-    #
-    # print np.array(res_img1).max(), np.array(res_img2).max(), np.array(res_img3).max()
-    # print np.array(res_img1).mean(),np.array(res_img1).std()
-    # print np.array(res_img2).mean(), np.array(res_img2).std()
-    # print np.array(res_img3).mean(), np.array(res_img3).std()
+    image1 = plt.imread('./dataset/1/pill_12.jpg')
+    res_img1 = compute_and_plot_transform(image1)
+    image2 = plt.imread('./dataset/3/pill_6.jpg')
+    res_img2 = compute_and_plot_transform(image2)
+    image3 = plt.imread('./dataset/5/pill_14.jpg')
+    res_img3 = compute_and_plot_transform(image3)
 
-
-    from skimage import exposure
-    import skimage.morphology as morp
-    from skimage.filters import rank
-
-
-    img = plt.imread('./dataset/1/pill_14.jpg')
-
-    # Global equalize
-    img_global = exposure.equalize_hist(img)
-    res_img1 = compute_and_plot_transform(img_global)
-
-    image2 = plt.imread('./dataset/3/pill_34.jpg')
-
-    img_global2 = exposure.equalize_hist(image2)
-    res_img2 = compute_and_plot_transform(img_global2)
-
-    print np.array(res_img1).max(), np.array(res_img2).max()
+    print np.array(res_img1).max(), np.array(res_img2).max(), np.array(res_img3).max()
     print np.array(res_img1).mean(),np.array(res_img1).std()
     print np.array(res_img2).mean(), np.array(res_img2).std()
+    print np.array(res_img3).mean(), np.array(res_img3).std()
+
+
+    # from skimage import exposure
+    # import skimage.morphology as morp
+    # from skimage.filters import rank
+    #
+    #
+    # img = plt.imread('./dataset/1/pill_14.jpg')
+    #
+    # # Global equalize
+    # img_global = exposure.equalize_hist(img)
+    # res_img1 = compute_and_plot_transform(img_global)
+    #
+    # image2 = plt.imread('./dataset/3/pill_34.jpg')
+    #
+    # img_global2 = exposure.equalize_hist(image2)
+    # res_img2 = compute_and_plot_transform(img_global2)
+    #
+    # print np.array(res_img1).max(), np.array(res_img2).max()
+    # print np.array(res_img1).mean(),np.array(res_img1).std()
+    # print np.array(res_img2).mean(), np.array(res_img2).std()
 
 
     # # Local Equalization, disk shape kernel
